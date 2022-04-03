@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { KeyboardAvoidingView } from 'react-native'
 import { TouchableOpacity } from 'react-native'
@@ -12,10 +12,18 @@ export default function App() {
 
   const [task, setTask] = useState('')
   const [taskList, setTaskList] = useState([])
+  const [count, setCount] = useState(0)
+  
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    console.log(`You have ${count} tasks`)
+  });
 
   const handleAddTask = () => {
     Keyboard.dismiss()
     setTaskList([...taskList, task])
+    setCount(taskList.length)
     setTask('')
   }
 
@@ -23,14 +31,18 @@ export default function App() {
     let tlCopy = [...taskList]
     tlCopy.splice(index, 1)
     setTaskList(tlCopy)
+    setCount(taskList.length)
   }
+
+  
+
 
   return (
     <View style={styles.container}>
 
       {/* Today's tasks */}
       <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}>Today's Tasks</Text>
+        <Text style={styles.sectionTitle}>Today's tasks ({count})</Text>
         <View style={styles.items}>
           {/*this is where tasks go */}
           {
