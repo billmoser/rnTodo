@@ -18,24 +18,22 @@ export default function App() {
   useEffect(() => {
     // Update the document title using the browser API
     console.log(`You have ${count} tasks`)
-  });
+  })
 
   const handleAddTask = () => {
     Keyboard.dismiss()
-    setTaskList([...taskList, task])
-    setCount(taskList.length)
+    const x = [...taskList, task]
+    setTaskList(x)
+    setCount(x.length)
     setTask('')
   }
 
   const deleteTask = (index) => {
-    let tlCopy = [...taskList]
-    tlCopy.splice(index, 1)
-    setTaskList(tlCopy)
-    setCount(taskList.length)
+    let x = [...taskList]
+    x.splice(index, 1)
+    setTaskList(x)
+    setCount(x.length)
   }
-
-  
-
 
   return (
     <View style={styles.container}>
