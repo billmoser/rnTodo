@@ -1,4 +1,6 @@
-import { action, observable, computed, makeObservable} from "mobx";
+import { action, observable, computed, makeObservable, makeAutoObservable} from 'mobx';
+import Tasks from '../logic/Tasks'
+
 
 /*
  * Store pattern: don't export the class, only the taskStore instance below.
@@ -6,29 +8,23 @@ import { action, observable, computed, makeObservable} from "mobx";
  */
 class TaskStore {
   
-  @observable taskList = []
+  @observable tasks = new Tasks()
 
   constructor() {
     makeObservable(this)
+    makeAutoObservable(this.tasks) // Needed to observe tasks.items
   }
 
   @computed
   get count() {
-    return this.taskList.length
+    return this.tasks.numTasks
   }
  
-  @action
-  addTask(task) {
-    this.taskList = [...this.taskList, task]
-  }
-
-  @action
-  deleteTask(index) {
-    this.taskList.splice(index, 1)
+  @action logInfo() {
+    console.log('Store: %dnum tasks', this.count)
   }
  
 }
-
 
 const taskStore = new TaskStore()
 

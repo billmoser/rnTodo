@@ -10,7 +10,6 @@ import {observer} from 'mobx-react'
 import {withStore} from '../mobx/StoreHelpers'
 
 import Task from '../components/Task'
-import ActionBox from '../components/Task'
 
 function Home({store}) {
 
@@ -29,7 +28,8 @@ function Home({store}) {
   // adds a new task to the TaskStore
   const handleAddTask = () => {
     Keyboard.dismiss()
-    store.addTask(task)
+    store.tasks.addTask(task)
+
     //  setTask('')  // uncomment to clear the input box after task addition
   }
 
@@ -44,11 +44,11 @@ function Home({store}) {
         <View style={styles.items}>
           {/* Create UI Items for each task */}
           {
-            store.taskList.map((item, index) => {
+            store.tasks.items.map((item, index) => {
               return (
                 <TouchableOpacity
                   key={index}
-                  onPress={() => store.deleteTask(index)} >
+                  onPress={() => store.tasks.deleteTask(index)} >
                   <Task text={item} />
                 </TouchableOpacity>
               )
