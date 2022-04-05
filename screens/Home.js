@@ -22,7 +22,7 @@ function Home({store}) {
   // just a demo of useEffect
   useEffect(() => {
     // Update the document title using the browser API
-    console.log(`You have ${store.count} tasks`)
+    console.log(`useEffect: You have ${store.count} tasks`)
   })
 
   // adds a new task to the TaskStore
