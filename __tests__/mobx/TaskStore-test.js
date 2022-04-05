@@ -1,5 +1,6 @@
 import TaskStore from "../../mobx/TaskStore"
 
+// Tests of the TaskStore MobX store.
 describe("TaskStore", () => {
     it("creates new todos and removes them", () => {
         const store = TaskStore
