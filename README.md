@@ -22,6 +22,10 @@ Run
 npm test
 ```
 
+Tests should always pass!
+
+These tests use enzyme and jest for testing.
+
 ## Get started
 
 To start, clone the project.
@@ -46,6 +50,23 @@ If it's not installed, you will have to install it. I installed it by running `s
 [Information about merge vs rebase (Atlassian)](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 
 [Simple git workflow (Atlassian)](https://www.atlassian.com/git/articles/simple-git-workflow-is-simple)
+
+How to contribute to this project
+
+```
+# Start your feature branch
+git checkout -b <123-my-feature-branch>
+# Do some work...
+# Do these first two steps in the case where we have not yet pushed our feature branch to remote
+git checkout main
+git pull
+# Checkout your feature branch again
+git checkout <123-my-feature-branch>
+git fetch origin
+git rebase origin/main
+git push origin <123-my-feature-branch>
+# Then create your PR
+```
 
 # Troubleshooting
 
